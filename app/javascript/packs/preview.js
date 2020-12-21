@@ -10,6 +10,13 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
      // 表示する画像を生成
      const blobImage = document.createElement('img');
      blobImage.setAttribute('src', blob);
+
+    // ファイル選択ボタンを生成
+    const inputHTML = document.createElement('input');
+    inputHTML.setAttribute('id', `message_image_${imageElementNum}`)
+    inputHTML.setAttribute('name', 'message[images][]')
+    inputHTML.setAttribute('type', 'file')
+
      // 生成したHTMLの要素をブラウザに表示させる
      imageElement.appendChild(blobImage);
      ImageList.appendChild(imageElement);
