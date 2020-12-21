@@ -21,15 +21,23 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
       // 生成したHTMLの要素をブラウザに表示させる
       imageElement.appendChild(blobImage);
+      imageElement.appendChild(inputHTML);
       ImageList.appendChild(imageElement);
+
+      inputHTML.addEventListener('change', (e) => {
+        file = e.target.files[0];
+        blob = window.URL.createObjectURL(file);
+
+        createImageHTML(blob)
+      })
     };
 
-  document.getElementById('message_image').addEventListener('change', function(e){
+    document.getElementById('message_image').addEventListener('change', function(e){
 
-    const file = e.target.files[0];
-    const blob = window.URL.createObjectURL(file);
+      const file = e.target.files[0];
+      const blob = window.URL.createObjectURL(file);
 
-    createImageHTML(blob);
-  });
+      createImageHTML(blob);
+    });
   });
 }
